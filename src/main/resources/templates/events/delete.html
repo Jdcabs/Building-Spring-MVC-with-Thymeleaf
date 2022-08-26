@@ -13,6 +13,7 @@
         <tr>
             <th>Select</th>
             <th>Event Name</th>
+            <th>Email Address</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                            <label><span class="form-check-label" for="identify2"
                                         th:text="${event.eventName}"></span></label>
                         </td>
+                        <td th:text="${event.emailAddress}"></td>
                     </tr>
             </th:block>
         </div>
