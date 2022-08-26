@@ -17,6 +17,8 @@
         <!-- fragment for the navigation bar -->
         <nav th:fragment="navigation-bar">
             <ul class="nav">
+                <!--this will go back to the local root directory which is the localhost:8080-->
+                <li class="nav-item"><a class="nav-link" href="../">Home</a></li>
                 <!-- this will go look inside the events directory -->
                 <li class="nav-item"><a class="nav-link" href="/events">All Event</a></li>
                 <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
