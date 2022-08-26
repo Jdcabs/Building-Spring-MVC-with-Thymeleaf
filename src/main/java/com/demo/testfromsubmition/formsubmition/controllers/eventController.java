@@ -4,8 +4,10 @@ import com.demo.testfromsubmition.formsubmition.data.EventsData;
 import com.demo.testfromsubmition.formsubmition.models.Events;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +42,15 @@ public class eventController {
     // after submitting a form in the create view template, this will get triggered.
     // this will save the data in the form to the List of Events.
     @PostMapping("create")
-    public String createEvent(@ModelAttribute Events newEvents) {
+    public String createEvent(@ModelAttribute @Valid Events newEvents, Errors errors, Model model) {
+
+        if(errors.hasErrors()) {
+
+            model.addAttribute("title", "Create Event Form");
+            model.addAttribute("eventNameError", "Error!");
+            return "events/create";
+        }
+
         EventsData.addEvent(newEvents);
         return "redirect:";
     }
