@@ -14,6 +14,7 @@
                         <th class="th-lg" scope="col">No.</th>
                         <th class="th-lg" scope="col">EventsName</th>
                         <th class="th-lg" scope="col">EventsDescription</th>
+                        <th class="th-lg" scope="col">Email Address</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,14 +22,10 @@
                         <td th:text="${event.id}"></td>
                         <td th:text="${event.eventName}"></td>
                         <td th:text="${event.eventDescription}"></td>
+                        <td th:text="${event.emailAddress}"></td>
                     </tr>
                 </tbody>
             </table>
             </div>
-    <h3> Create new Events</h3>
-    <p>create new event <a href="/events/create">here</a>.</p>
-
-     <!--this will go back to the local root directory which is the localhost:8080-->
-    <a href="../">Back</a>
     </body>
 </html>
