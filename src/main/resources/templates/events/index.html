@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!-- Using the fragment template -->
+<head th:replace="fragments :: head"></head>
+
+    <body class="container">
+    <h1>All Events</h1>
+    <nav th:replace="fragments :: navigation-bar"></nav>
+
+            <div class="table-responsive text-nowrap d-flex ">
+            <table class="table table-hover table-striped col-8">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="th-lg" scope="col">No.</th>
+                        <th class="th-lg" scope="col">EventsName</th>
+                        <th class="th-lg" scope="col">EventsDescription</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="event : ${events}" >
+                        <td th:text="${event.id}"></td>
+                        <td th:text="${event.eventName}"></td>
+                        <td th:text="${event.eventDescription}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+    <h3> Create new Events</h3>
+    <p>create new event <a href="/events/create">here</a>.</p>
+
+     <!--this will go back to the local root directory which is the localhost:8080-->
+    <a href="../">Back</a>
+    </body>
+</html>

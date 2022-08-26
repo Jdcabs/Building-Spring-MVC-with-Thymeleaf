@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!-- Using the fragment template -->
+<head th:replace="fragments :: head"></head>
+
+    <body class="container">
+        <h1>Create Event</h1>
+
+        <form method="post" action="create" >
+            <div class="form-group">
+                <label for="eventsName">Events Name</label>
+                <input class="form-control" id="eventsName" type="text" name="eventName">
+            </div>
+
+            <div class="form-group">
+                <label for="eventsDescription">Events Description</label>
+                <input class="form-control" id="eventsDescription" type="text" name="eventDescription">
+            </div>
+
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-success">
+            </div>
+        </form>
+
+    </body>
+</html>

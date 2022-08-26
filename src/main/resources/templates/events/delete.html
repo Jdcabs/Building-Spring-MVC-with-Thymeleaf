@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<h1>Delete Event</h1>
+<nav th:replace="fragments :: navigation-bar"></nav>
+
+<div class="col-md">
+<form action="delete" method="post" aria-disabled="true">
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Select</th>
+            <th>Event Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div class="form-check">
+            <th:block th:each="event : ${events}">
+                    <tr>
+                        <td>
+                           <input class="form-check-input" id="identify2" name="eventIds"
+                                          th:value="${event.id}"
+                                          type="checkbox">
+                        </td>
+                        <td>
+                           <label><span class="form-check-label" for="identify2"
+                                        th:text="${event.eventName}"></span></label>
+                        </td>
+                    </tr>
+            </th:block>
+        </div>
+        </tbody>
+    </table>
+
+    <input class="btn btn-danger" type="submit" value="Delete">
+</form>
+</div>
+
+<!--        <form action="delete" method="post">-->
+<!--                <th:block th:each="event : ${events}">-->
+<!--                        <div class="form-group">-->
+<!--                            <div class="form-check">-->
+<!--                                <label>-->
+<!--                                    <span class="form-check-label" for="identify" th:text="${event.eventName}"></span>-->
+<!--                                    <input class="form-check-input" id="identify" name="eventIds" th:value="${event.id}"-->
+<!--                                           type="checkbox">-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                </th:block>-->
+<!--            <input class="btn btn-danger" type="submit" value="Delete">-->
+<!--        </form>-->
+
+</body>
+</html>
