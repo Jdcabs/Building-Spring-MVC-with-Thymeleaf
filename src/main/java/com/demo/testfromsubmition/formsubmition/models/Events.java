@@ -2,18 +2,27 @@ package com.demo.testfromsubmition.formsubmition.models;
 
 import lombok.*;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
-@NoArgsConstructor
+
 @ToString
 public class Events {
     private long id;
     private static long nextId = 1L;
+    @NotBlank
+    @Size(min = 5, max = 50, message = "too long")
     private String eventName;
+    @Size(min = 5, max = 200, message = "too long")
     private String eventDescription;
+    @Email(message = "invalid email address")
+    private String emailAddress;
 
-    public Events(String eventName, String eventDescription) {
+    public Events(String eventName, String eventDescription, String emailAddress) {
         this.eventName = eventName;
+        this.emailAddress = emailAddress;
         this.eventDescription = eventDescription;
         this.id = nextId;
         nextId = nextId + 1;
@@ -37,6 +46,12 @@ public class Events {
 
     public void setEventDescription(String eventDescription) {
         this.eventDescription = eventDescription;
+    }
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
     @Override
