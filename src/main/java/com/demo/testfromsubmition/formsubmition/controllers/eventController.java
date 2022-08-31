@@ -2,14 +2,13 @@ package com.demo.testfromsubmition.formsubmition.controllers;
 
 import com.demo.testfromsubmition.formsubmition.data.EventsData;
 import com.demo.testfromsubmition.formsubmition.models.Events;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("events")
@@ -28,6 +27,7 @@ public class eventController {
     @GetMapping("create")
     public String renderCreateFormView(Model model) {
         model.addAttribute("title", "Create Event Form");
+        model.addAttribute(new Events());
         return "events/create";
     }
 
@@ -42,12 +42,11 @@ public class eventController {
     // after submitting a form in the create view template, this will get triggered.
     // this will save the data in the form to the List of Events.
     @PostMapping("create")
+//    @RequestMapping(method = { RequestMethod.POST, RequestMethod.GET}, value = "create")
     public String createEvent(@ModelAttribute @Valid Events newEvents, Errors errors, Model model) {
 
         if(errors.hasErrors()) {
-
             model.addAttribute("title", "Create Event Form");
-            model.addAttribute("eventNameError", "Error!");
             return "events/create";
         }
 
