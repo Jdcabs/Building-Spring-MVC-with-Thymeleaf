@@ -1,25 +1,30 @@
 package com.demo.testfromsubmition.formsubmition.models;
 
 import lombok.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.beans.BeanProperty;
 import java.util.Objects;
 
 
 @ToString
+@Component
 public class Events {
     private long id;
     private static long nextId = 1L;
-    @NotBlank
-    @Size(min = 5, max = 50, message = "too long")
+    @NotBlank(message = "name required")
+    @Size(max = 50, message = "name too long")
     private String eventName;
-    @Size(min = 5, max = 200, message = "too long")
+    @NotBlank(message = "description required")
+    @Size(max = 200, message = "description too long")
     private String eventDescription;
+    @NotBlank(message = "email required")
     @Email(message = "invalid email address")
     private String emailAddress;
-
     public Events(String eventName, String eventDescription, String emailAddress) {
         this.eventName = eventName;
         this.emailAddress = emailAddress;
@@ -27,6 +32,8 @@ public class Events {
         this.id = nextId;
         nextId = nextId + 1;
     }
+
+    public Events(){}
 
     public long getId() {
         return id;
