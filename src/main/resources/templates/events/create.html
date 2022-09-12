@@ -5,23 +5,34 @@
 
     <body class="container">
         <h1>Create Event</h1>
+
         <form method="post" action="create" >
+
             <div class="form-group">
                 <label for="eventName">Events Name</label>
                 <input class="form-control" id="eventName" th:field="${events.eventName}">
-                <p><span class="text-warning font-italic" th:errors="${events.eventName}"></span></p>
+                <p><span class="text-danger font-italic" th:errors="${events.eventName}"></span></p>
             </div>
 
             <div class="form-group">
                 <label for="eventDescription">Events Description</label>
                 <input class="form-control" id="eventDescription" th:field="${events.eventDescription}">
-                <p><span class="text-warning font-italic" th:errors="${events.eventDescription}"></span></p>
+                <p><span class="text-danger font-italic" th:errors="${events.eventDescription}"></span></p>
             </div>
 
             <div class="form-group">
                 <label for="emailAddress">Email Address</label>
-                <input class="form-control" id="emailAddress" th:field="${events.emailAddress}">
-                <p><span class="text-warning font-italic" th:errors="${events.emailAddress}"></span></p>
+                <input class="form-control" id="emailAddress" th:field="${events.emailAddress}" max="200">
+                <p><span class="text-danger font-italic" th:errors="${events.emailAddress}"></span></p>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="eventLabel">Type of Event</label>
+                        <select class="form-select" id="eventLabel" th:field="${events.typeOfEvents}">
+                            <option th:each="type : ${types}" th:value="${type}" th:text="${type.displayEventType}"></option>
+                        </select>
+                </div>
             </div>
 
             <br>
@@ -29,6 +40,5 @@
                 <input type="submit" value="Submit" class="btn btn-success">
             </div>
         </form>
-
     </body>
 </html>
