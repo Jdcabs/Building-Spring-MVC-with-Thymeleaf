@@ -1,18 +1,14 @@
 package com.demo.testfromsubmition.formsubmition.models;
 
-import lombok.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import lombok.ToString;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.beans.BeanProperty;
 import java.util.Objects;
 
 
 @ToString
-@Component
 public class Events {
     private long id;
     private static long nextId = 1L;
@@ -25,10 +21,13 @@ public class Events {
     @NotBlank(message = "email required")
     @Email(message = "invalid email address")
     private String emailAddress;
-    public Events(String eventName, String eventDescription, String emailAddress) {
+    private TypeOfEvents typeOfEvents;
+
+    public Events(String eventName, String eventDescription, String emailAddress, TypeOfEvents typeOfEvents) {
         this.eventName = eventName;
         this.emailAddress = emailAddress;
         this.eventDescription = eventDescription;
+        this.typeOfEvents = typeOfEvents;
         this.id = nextId;
         nextId = nextId + 1;
     }
@@ -57,8 +56,17 @@ public class Events {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
+
     public String getEmailAddress() {
         return emailAddress;
+    }
+
+    public TypeOfEvents getTypeOfEvents() {
+        return typeOfEvents;
+    }
+
+    public void setTypeOfEvents(TypeOfEvents typeOfEvents) {
+        this.typeOfEvents = typeOfEvents;
     }
 
     @Override
