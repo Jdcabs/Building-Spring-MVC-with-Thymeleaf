@@ -15,14 +15,16 @@
                         <th class="th-lg" scope="col">EventsName</th>
                         <th class="th-lg" scope="col">EventsDescription</th>
                         <th class="th-lg" scope="col">Email Address</th>
+                        <th class="th-lg" scope="col">Type of Event</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="event : ${events}" >
                         <td th:text="${event.id}"></td>
-                        <td th:text="${event.eventName}"></td>
+                        <td th:text="${event.eventName}" ></td>
                         <td th:text="${event.eventDescription}"></td>
                         <td th:text="${event.emailAddress}"></td>
+                        <td th:text="${event.typeOfEvents.displayEventType}"></td>
                     </tr>
                 </tbody>
             </table>
