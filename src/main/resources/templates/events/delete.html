@@ -13,7 +13,9 @@
         <tr>
             <th>Select</th>
             <th>Event Name</th>
+            <th>Event Description</th>
             <th>Email Address</th>
+            <th>Type of Event</th>
         </tr>
         </thead>
         <tbody>
@@ -21,15 +23,25 @@
             <th:block th:each="event : ${events}">
                     <tr>
                         <td>
-                           <input class="form-check-input" id="identify2" name="eventIds"
+                           <input class="form-check-input" name="eventIds"
                                           th:value="${event.id}"
                                           type="checkbox">
                         </td>
                         <td>
-                           <label><span class="form-check-label" for="identify2"
+                           <label><span class="form-check-label"
                                         th:text="${event.eventName}"></span></label>
                         </td>
-                        <td th:text="${event.emailAddress}"></td>
+                        <td>
+                            <label><span class="form-check-label"
+                                         th:text="${event.eventDescription}"></span></label>
+                        </td>
+                        <td>
+                            <label><span class="form-check-label" th:text="${event.emailAddress}"></span></label>
+                        </td>
+                        <td>
+                            <label><span class="form-check-label"
+                                         th:text="${event.typeOfEvents.displayEventType}"></span></label>
+                        </td>
                     </tr>
             </th:block>
         </div>
