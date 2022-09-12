@@ -23,7 +23,10 @@ public class EventsData {
 
     // add an event
     public static void addEvent(Events event) {
-        Events newEvents = new Events(event.getEventName(), event.getEventDescription(), event.getEmailAddress());
+        Events newEvents = new Events(event.getEventName(),
+                                        event.getEventDescription(),
+                                        event.getEmailAddress(),
+                                        event.getTypeOfEvents());
         events.put(newEvents.getId(), newEvents);
     }
 
